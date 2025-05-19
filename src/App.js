@@ -18,8 +18,6 @@ const darkBackgroundTheme = createTheme({
 
 
 const App = () => {
-  const [streams, setStreams] = useState([]);
-
   return (
     <ThemeProvider theme={darkBackgroundTheme}>
       <div className="App">
