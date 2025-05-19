@@ -1,31 +1,3 @@
-// import React, { useEffect, useRef } from 'react';
-// import Hls from 'hls.js';
-
-// function VideoPlayer({ src }) {
-//   const videoRef = useRef();
-
-//   useEffect(() => {
-//     if (Hls.isSupported()) {
-//       const hls = new Hls();
-//       hls.loadSource(src);
-//       hls.attachMedia(videoRef.current);
-
-//       return () => {
-//         hls.destroy();
-//       };
-//     } else if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-//       videoRef.current.src = src;
-//     }
-//   }, [src]);
-
-//   return (
-//     <video ref={videoRef} controls autoPlay width="640" height="360" />
-//   );
-// }
-
-// export default VideoPlayer;
-
-
 import React, { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import { Card, CardContent, CardActions, Button, Typography } from '@mui/material';
