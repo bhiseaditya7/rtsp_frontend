@@ -17,7 +17,6 @@ import FFmpegMetadataViewer from '../../FFmpegMetadataViewer';
 
 export default function SignIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
- // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [streams, setStreams] = useState([]); 
 
   const handleStreamStarted = (newStream) => {
@@ -27,14 +26,10 @@ export default function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // const username = data.get('username');
-    // const password1 = data.get('password1');
-
     try {
       const response = await fetch('https://rtsp1.onrender.com/api/signin/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify({ username, password1 }),
         body: JSON.stringify({
         username: data.get('username'),
         password1: data.get('password1'),
@@ -42,7 +37,7 @@ export default function SignIn() {
       });
 
       if (response.ok) {
-        alert("done");
+        alert("Login Successfull!");
         const result = await response.json();
         localStorage.setItem('access', result.access);
         setIsLoggedIn(true); // Switch to StreamForm
@@ -53,20 +48,7 @@ export default function SignIn() {
       console.error('Login error:', error);
     }
   };
-  //   const handleStreamStarted = (newStream) => {
-  //   setStreams((prevStreams) => [...prevStreams, newStream]);
-  // };
 
-
-  // const handleStreamStarted = (streamInfo) => {
-  //   console.log('Stream started:', streamInfo);
-  // };
-
-  // if (isLoggedIn) {
-    
-  //   return <StreamForm onStreamStarted={handleStreamStarted} />;
-    
-  // }
   if (isLoggedIn) {
     return (
       <Box sx={{ padding: 4 }}>

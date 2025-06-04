@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 
 function FFmpegMetadataViewer() {
   useEffect(() => {
-    //const socket = new WebSocket('wss://rtsp1.onrender.com/ws/metadata/');
-    //const socket = new WebSocket('ws://rtsp1.onrender.com/ws/metadata/');
     const socket = new WebSocket('wss://rtsp1.onrender.com/ws/metadata/');
 
     socket.onmessage = (event) => {
