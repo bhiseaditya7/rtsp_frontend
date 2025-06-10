@@ -3,12 +3,13 @@ import axios from 'axios';
 
 function StreamForm({ onStreamStarted }) {
   const [rtspUrl, setRtspUrl] = useState('');
+  // const [streamId, setStreamId] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       //const res = await axios.post('https://rtsp1.onrender.com/stream/', {
-      const res = await axios.post('https://rtsp1.onrender.com/stream/', {
+      const res = await axios.post('http://127.0.0.1:8000/stream/', {
         rtsp_url: rtspUrl,
       });
 
