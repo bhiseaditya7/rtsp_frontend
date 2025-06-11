@@ -11,9 +11,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import StreamForm from '../../StreamForm';
-import VideoPlayer from '../../VideoPlayer';
-import FFmpegMetadataViewer from '../../FFmpegMetadataViewer';
+import VideoPlayer from '../../VideoPlayer1';
+import StreamForm from '../StreamForm/StreamForm';
 
 export default function SignIn() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
@@ -27,7 +26,8 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const response = await fetch('https://rtsp1.onrender.com/api/signin/', {
+      const response = await fetch('http://127.0.0.1:8000/api/signin/', {
+      //const response = await fetch('https://rtsp1.onrender.com/api/signin/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,14 +52,15 @@ export default function SignIn() {
   if (isLoggedIn) {
     return (
       <Box sx={{ padding: 4 }}>
+        {/* <Navbar /> */}
         <StreamForm onStreamStarted={handleStreamStarted} />
 
         <div className="stream-grid" style={{ marginTop: '2rem' }}>
           {streams.map((stream, index) => (
             <div key={index} className="stream-card" style={{ marginBottom: '1.5rem' }}>
               <h4>{stream.rtspUrl}</h4>
-              <FFmpegMetadataViewer />
-              <VideoPlayer src={stream.hlsUrl} />
+              {/* <FFmpegMetadataViewer /> */}
+              <VideoPlayer src={stream.hlsUrl} websocketUrl={`ws://127.0.0.1:8000/ws/faces/`}/>
             </div>
           ))}
         </div>
