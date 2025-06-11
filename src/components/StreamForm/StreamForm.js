@@ -22,7 +22,7 @@ function StreamForm({ onStreamStarted }) {
       if (!stream.rtspUrl.trim()) continue;
 
       try {
-        const res = await axios.post('http://127.0.0.1:8000/stream/', {
+        const res = await axios.post('https://rtsp1.onrender.com/stream/', {
           rtsp_url: stream.rtspUrl,
         });
 

@@ -26,8 +26,8 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/signin/', {
-      //const response = await fetch('https://rtsp1.onrender.com/api/signin/', {
+      // const response = await fetch('http://127.0.0.1:8000/api/signin/', {
+      const response = await fetch('https://rtsp1.onrender.com/api/signin/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -60,7 +60,7 @@ export default function SignIn() {
             <div key={index} className="stream-card" style={{ marginBottom: '1.5rem' }}>
               <h4>{stream.rtspUrl}</h4>
               {/* <FFmpegMetadataViewer /> */}
-              <VideoPlayer src={stream.hlsUrl} websocketUrl={`ws://127.0.0.1:8000/ws/faces/`}/>
+              <VideoPlayer src={stream.hlsUrl} websocketUrl={`wss://rtsp1.onrender.com/ws/faces/`}/>
             </div>
           ))}
         </div>
