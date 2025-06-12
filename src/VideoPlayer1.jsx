@@ -54,6 +54,8 @@ function VideoPlayer({ src, websocketUrl }) {
   // WebSocket connection
   useEffect(() => {
     const socket = new WebSocket(websocketUrl);
+    console.log("socket url is",socket);
+    console.log("socket2 is ", websocketUrl);
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
